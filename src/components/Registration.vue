@@ -1,5 +1,5 @@
 <template>
-  <section class="relative overflow-hidden pt-32 pb-48">
+  <section class="relative overflow-hidden pt-32 pb-25">
     <!-- BG -->
     <div class="absolute inset-0 bg-gradient-to-b from-[#ffffff] via-[#e6f7f1]"></div>
     <div
@@ -36,7 +36,7 @@
         ></div>
 
         <!-- BOTTOM SERVICES -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-12">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-12">
           <RouterLink
             v-for="item in servicesBottom"
             :key="item.title"
@@ -59,61 +59,66 @@
     </div>
   </section>
 </template>
-<script setup>
+<script setup lang="ts">
 import { RouterLink } from "vue-router";
 
 const services = [
   {
     title: "Pendaftaran\nOnline",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_pendol.png", import.meta.url).href,
     link: "/pendaftaran-online",
   },
   {
     title: "Ketersediaan\nKamar Rawat Inap",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_inforanap.png", import.meta.url).href,
     link: "/ketersediaan-kamar",
   },
   {
     title: "Hasil Penunjang\n(SIPS)",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_sips.png", import.meta.url).href,
     link: "/hasil-penunjang",
   },
   {
     title: "Daftar Dokter",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_daftardokter.png", import.meta.url).href,
     link: "/daftar-dokter",
   },
   {
     title: "Tarif dan\nKerjasama",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_tarifkerjasama.png", import.meta.url).href,
     link: "/tarif-kerjasama",
   },
   {
     title: "Standar\nPelayanan Publik",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_spp.png", import.meta.url).href,
     link: "/standar-pelayanan",
   },
 ];
 
 const servicesBottom = [
   {
+    title: "Sicerdas",
+    icon: new URL("../assets/images/quicklink_pendol.png", import.meta.url).href,
+    link: "/pendaftaran-online",
+  },
+  {
     title: "Pengaduan\nLayanan Publik",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_plp.png", import.meta.url).href,
     link: "/pengaduan",
   },
   {
     title: "Permohonan\nInformasi",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_pi.png", import.meta.url).href,
     link: "/permohonan-informasi",
   },
   {
     title: "Keberatan Atas\nPermohonan Informasi",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_kapi.png", import.meta.url).href,
     link: "/keberatan-informasi",
   },
   {
     title: "PROMs & PREMs",
-    icon: "https://img.icons8.com/3d-fluency/94/document.png",
+    icon: new URL("../assets/images/quicklink_promprem.png", import.meta.url).href,
     link: "/proms-prems",
   },
 ];

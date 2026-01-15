@@ -1,5 +1,5 @@
 <template>
-  <section class="relative overflow-hidden py-32">
+  <section class="relative overflow-hidden py-1">
     <!-- BG -->
     <!-- CONTENT -->
     <div class="relative z-10 max-w-7xl mx-auto px-6">
@@ -8,17 +8,10 @@
         <!-- HEADER -->
         <div class="flex flex-col items-center gap-4 mb-12">
           <div
-            class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-500 text-white font-bold text-lg"
+            class="flex items-center justify-center rounded-xl text-white font-bold text-lg"
           >
-            U
+            <img src="../assets/images/layung.svg" alt="Logo" class="h-40 mb-5" />
           </div>
-
-          <h3 class="text-2xl font-bold text-gray-900">Layanan Unggulan</h3>
-
-          <!-- Optional subtitle -->
-          <p class="max-w-xl text-gray-500 text-sm">
-            Layanan kesehatan unggulan dengan teknologi modern dan tenaga profesional
-          </p>
         </div>
 
         <!-- CARDS -->
@@ -39,72 +32,165 @@
         <!-- HEADER -->
         <div class="flex flex-col items-center gap-4 mb-12 text-center">
           <div
-            class="w-12 h-12 flex items-center justify-center rounded-xl bg-emerald-500 text-white font-bold text-lg"
+            class="flex items-center justify-center rounded-xl text-white font-bold text-lg"
           >
-            R
+            <img src="../assets/images/runas.svg" alt="Logo" class="h-40 mb-5" />
           </div>
-
-          <h3 class="text-2xl font-bold text-gray-900">Rujukan Nasional</h3>
-
-          <!-- Optional subtitle -->
-          <p class="max-w-xl text-gray-500 text-sm">
-            Pusat rujukan nasional dengan layanan medis terpadu dan teknologi mutakhir
-          </p>
         </div>
 
-        <!-- GRID -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <ServiceCard v-for="item in rujukan" :key="item.title" :item="item" />
+        <!-- GRID + ANIMATION -->
+        <TransitionGroup
+          name="fade-slide"
+          tag="div"
+          class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          <ServiceCard v-for="item in visibleRujukan" :key="item.title" :item="item" />
+        </TransitionGroup>
+
+        <!-- BUTTON -->
+        <div class="flex justify-center mt-12">
+          <button
+            @click="toggleShow"
+            class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition"
+          >
+            {{ showAll ? "Lihat Lebih Sedikit" : "Lihat Selengkapnya" }}
+            <span
+              class="transition-transform duration-300"
+              :class="showAll ? 'rotate-180' : ''"
+            >
+              ▼
+            </span>
+          </button>
         </div>
       </div>
-
       <!-- End Rujukan Nasional -->
     </div>
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref, computed } from "vue";
 import ServiceCard from "./card/ServicesCard.vue";
+
+const showAll = ref(false);
+
+const visibleRujukan = computed(() => (showAll.value ? rujukan : rujukan.slice(0, 8)));
+
+const toggleShow = () => {
+  showAll.value = !showAll.value;
+};
 
 const unggulan = [
   {
     title: "Immunotherapy Clinic",
-    desc: "Layanan imunoterapi modern untuk meningkatkan kualitas hidup pasien.",
-    icon: "https://img.icons8.com/fluency/96/immunotherapy.png",
+    icon: new URL("../assets/images/layungimuno.png", import.meta.url).href,
     link: "/layanan/immunotherapy",
   },
   {
-    title: "Aesthetic Clinic",
-    desc: "Perawatan estetika medis dengan standar klinis profesional.",
-    icon: "https://img.icons8.com/fluency/96/skin-care.png",
+    title: "Soetomo Aesthetic Clinic",
+    icon: new URL("../assets/images/layungestetik.png", import.meta.url).href,
     link: "/layanan/aesthetic",
   },
 ];
 
 const rujukan = [
   {
-    title: "Endoskopi Minimal Invasif",
-    desc: "Prosedur diagnostik dan terapeutik modern.",
-    icon: "https://img.icons8.com/fluency/96/endoscopy.png",
+    title: "Pelayanan Bank Jaringan",
+    icon: new URL("../assets/images/rnPbjrm.png", import.meta.url).href,
+    link: "/rujukan/bankjaringan",
+  },
+  {
+    title: "Pelayanan Bayi Tabung",
+    icon: new URL("../assets/images/rnPbt.png", import.meta.url).href,
+    link: "/rujukan/bayitabung",
+  },
+  {
+    title: "Pelayanan Endoskopi dan Minimal Invasif",
+    icon: new URL("../assets/images/rnPemi.png", import.meta.url).href,
     link: "/rujukan/endoskopi",
   },
   {
-    title: "Ginjal Terpadu",
-    desc: "Penanganan komprehensif penyakit ginjal.",
-    icon: "https://img.icons8.com/fluency/96/kidney.png",
-    link: "/rujukan/ginjal",
+    title: "Pelayanan Endokrin Terintegrasi",
+    icon: new URL("../assets/images/rnPet.png", import.meta.url).href,
+    link: "/rujukan/endokrin",
   },
   {
-    title: "Jantung Terpadu",
-    desc: "Pusat layanan kardiovaskular terintegrasi.",
-    icon: "https://img.icons8.com/fluency/96/heart-health.png",
-    link: "/rujukan/jantung",
+    title: "Pelayanan Ginjal Terpadu",
+    icon: new URL("../assets/images/rnPgit.png", import.meta.url).href,
+    link: "/rujukan/ginjalterpadu",
   },
   {
-    title: "Kanker Terpadu",
-    desc: "Pendekatan multidisiplin penanganan kanker.",
-    icon: "https://img.icons8.com/fluency/96/ribbon.png",
-    link: "/rujukan/kanker",
+    title: "Pelayanan Geriatri Terpadu",
+    icon: new URL("../assets/images/rnPgt.png", import.meta.url).href,
+    link: "/rujukan/geriatriterpadu",
+  },
+  {
+    title: "Pelayanan Penyakit Infeksi Emerging dan Re-Emerging",
+    icon: new URL("../assets/images/rnPinere.png", import.meta.url).href,
+    link: "/rujukan/penyakitinfeksi",
+  },
+  {
+    title: "Pelayanan Kembar Siam",
+    icon: new URL("../assets/images/rnPks.png", import.meta.url).href,
+    link: "/rujukan/kembarsiam",
+  },
+  // 1
+  {
+    title: "Pelayanan Ortorik Prosterik",
+    icon: new URL("../assets/images/rnPbjrm.png", import.meta.url).href,
+    link: "/rujukan/bankjaringan",
+  },
+  {
+    title: "Pelayanan Paliatif dan Bebas Nyeri",
+    icon: new URL("../assets/images/rnPbt.png", import.meta.url).href,
+    link: "/rujukan/bayitabung",
+  },
+  {
+    title: "Pelayanan Sport Center",
+    icon: new URL("../assets/images/rnPemi.png", import.meta.url).href,
+    link: "/rujukan/endoskopi",
+  },
+  {
+    title: "Pelayanan Sistem Saraf Terintegrasi",
+    icon: new URL("../assets/images/rnPet.png", import.meta.url).href,
+    link: "/rujukan/endokrin",
+  },
+  {
+    title: "Pelayanan Tumbuh Kembang Anak",
+    icon: new URL("../assets/images/rnPgit.png", import.meta.url).href,
+    link: "/rujukan/ginjalterpadu",
+  },
+  {
+    title: "Program Pencegahan Resistensi Antimikroba",
+    icon: new URL("../assets/images/rnPgt.png", import.meta.url).href,
+    link: "/rujukan/geriatriterpadu",
+  },
+  {
+    title: "Pusat Pelayanan Jantung Terpadu",
+    icon: new URL("../assets/images/rnPinere.png", import.meta.url).href,
+    link: "/rujukan/penyakitinfeksi",
+  },
+  {
+    title: "Pusat Pengembangan Layanan Kanker",
+    icon: new URL("../assets/images/rnPks.png", import.meta.url).href,
+    link: "/rujukan/kembarsiam",
   },
 ];
 </script>
+
+<style scoped>
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s ease;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(16px);
+}
+</style>

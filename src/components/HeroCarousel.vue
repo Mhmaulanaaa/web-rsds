@@ -85,13 +85,13 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 const slides = [
   {
-    image: new URL("../assets/rsds1.jpg", import.meta.url).href,
+    image: new URL("../assets/images/rsds1.jpg", import.meta.url).href,
   },
   {
-    image: new URL("../assets/rsds2.jpg", import.meta.url).href,
+    image: new URL("../assets/images/rsds2.jpg", import.meta.url).href,
   },
   {
-    image: new URL("../assets/rsds3.webp", import.meta.url).href,
+    image: new URL("../assets/images/rsds3.webp", import.meta.url).href,
   },
 ];
 

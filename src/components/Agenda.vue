@@ -1,69 +1,177 @@
 <template>
-  <section class="relative overflow-hidden py-28">
+  <section class="relative overflow-hidden py-5">
     <div class="relative max-w-7xl mx-auto px-6">
-      <!-- HEADER CENTER -->
+      <!-- HEADER -->
       <div class="text-center mb-12">
         <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Agenda</h2>
         <p class="mt-3 text-gray-600 max-w-2xl mx-auto">
           Jadwal kegiatan, pelatihan, dan agenda resmi RSUD Dr. Soetomo
         </p>
-
-        <div class="mt-6">
-          <a
-            href="https://sicerdas.kemkes.go.id"
-            target="_blank"
-            class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-7 py-3 rounded-full shadow-lg transition"
-          >
-            Website SICERDAS
-            <span class="text-base">↗</span>
-          </a>
-        </div>
       </div>
 
-      <!-- GRID DEMPET + CENTER -->
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center"
+      <!-- AGENDA CARDS -->
+      <TransitionGroup
+        name="fade-down"
+        tag="div"
+        class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
       >
-        <AgendaCard
-          v-for="agenda in agendas"
-          :key="agenda.title"
-          v-bind="agenda"
-          class="w-full max-w-sm bg-white shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl"
-        />
+        <div
+          v-for="(item, index) in visibleAgenda"
+          :key="`${item.title}-${index}`"
+          class="group grid grid-cols-[90px_1fr] gap-4 transition-all duration-300"
+        >
+          <!-- DATE -->
+          <div
+            class="rounded-2xl bg-white border border-white flex flex-col justify-center items-center shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md group-hover:border-emerald-300"
+          >
+            <div class="text-3xl font-bold text-emerald-700">{{ item.day }}</div>
+            <div class="text-xs font-semibold text-emerald-600 uppercase">
+              {{ item.month }}
+            </div>
+            <div class="text-xs text-gray-500">{{ item.year }}</div>
+          </div>
+
+          <!-- CONTENT -->
+          <div
+            class="h-full rounded-2xl bg-white border border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out group-hover:-translate-y-2 group-hover:border-emerald-100 group-hover:shadow-[0_18px_40px_rgba(16,185,129,0.25)]"
+          >
+            <div class="p-6 flex flex-col h-full">
+              <!-- BADGE -->
+              <span
+                class="inline-block mb-3 px-2.5 py-0.5 text-xs font-semibold rounded-md w-fit"
+                :class="
+                  item.status === 'Penting'
+                    ? 'bg-red-100 text-red-700'
+                    : 'bg-amber-100 text-amber-700'
+                "
+              >
+                {{ item.status }}
+              </span>
+
+              <!-- TITLE -->
+              <h3
+                class="text-lg font-bold text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem] transition-colors group-hover:text-emerald-600"
+              >
+                {{ item.title }}
+              </h3>
+
+              <!-- DESC -->
+              <p class="text-gray-600 mb-6 line-clamp-3 min-h-[4.5rem]">
+                {{ item.description }}
+              </p>
+
+              <!-- FOOTER -->
+              <div class="mt-auto">
+                <a
+                  href="#"
+                  class="text-sm font-medium text-emerald-600 hover:text-emerald-700"
+                >
+                  Baca Selengkapnya →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </TransitionGroup>
+
+      <!-- Button -->
+      <div class="mt-16 text-center">
+        <button
+          @click="toggleShowAgenda"
+          class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition"
+        >
+          {{ showAll ? "Lihat Lebih Sedikit" : "Lihat Selengkapnya" }}
+          <span
+            class="transition-transform duration-300"
+            :class="showAll ? 'rotate-180' : ''"
+          >
+            ▼
+          </span>
+        </button>
       </div>
     </div>
   </section>
 </template>
+<script setup lang="ts">
+import { ref, computed } from "vue";
+const showAll = ref(false);
 
-<script setup>
-import AgendaCard from "./card/AgendaCard.vue";
+const visibleAgenda = computed(() => (showAll.value ? agenda : agenda.slice(0, 3)));
 
-const agendas = [
+const toggleShowAgenda = () => {
+  showAll.value = !showAll.value;
+};
+const agenda = [
   {
-    date: "26 September 2025 – 04 Oktober 2025",
-    status: "belum",
-    title:
-      "Pelatihan Teknologi Kontrasepsi Terkini atau Contraception Technology Update (CTU)",
-    image: new URL("../assets/rsds1.jpg", import.meta.url).href,
+    day: "28",
+    month: "Jan",
+    year: "2025",
+    status: "Pelatihan",
+    title: "Pelatihan Peningkatan Kompetensi Sistem Informasi Rumah Sakit",
+    description:
+      "Pelatihan internal bagi tenaga kesehatan dan staf pendukung terkait optimalisasi penggunaan Sistem Informasi Manajemen Rumah Sakit (SIMRS).",
   },
   {
-    date: "26 September 2025 – 03 Oktober 2025",
-    status: "selesai",
-    title:
-      "Pelatihan Teknologi Kontrasepsi Terkini atau Contraception Technology Update (CTU)",
-    image: new URL("../assets/rsds1.jpg", import.meta.url).href,
+    day: "05",
+    month: "Feb",
+    year: "2025",
+    status: "Pendidikan",
+    title: "Pendidikan dan Sosialisasi Keamanan Data dan Privasi Pasien",
+    description:
+      "Kegiatan edukasi bagi seluruh unit kerja mengenai penerapan keamanan informasi dan perlindungan data pasien sesuai standar nasional.",
   },
   {
-    date: "22 September 2025 – 27 September 2025",
-    status: "selesai",
-    title: "Pelatihan Pelayanan Sterilisasi Tingkat Lanjut",
-    image: new URL("../assets/rsds1.jpg", import.meta.url).href,
+    day: "12",
+    month: "Mar",
+    year: "2025",
+    status: "Pelatihan",
+    title: "Pelatihan Penggunaan Aplikasi SIMRS Versi Terbaru",
+    description:
+      "Pelatihan teknis bagi tenaga medis dan administrasi terkait fitur dan pembaruan terbaru pada aplikasi SIMRS rumah sakit.",
   },
   {
-    date: "17 September 2025 – 24 September 2025",
-    status: "selesai",
-    title: "Pelatihan Kewaspadaan Kegawatdaruratan Maternal dan Neonatal",
-    image: new URL("../assets/rsds1.jpg", import.meta.url).href,
+    day: "20",
+    month: "Apr",
+    year: "2025",
+    status: "Pelatihan",
+    title: "Workshop Integrasi Sistem Informasi Rumah Sakit",
+    description:
+      "Workshop dan diskusi teknis mengenai integrasi sistem informasi rumah sakit dengan platform layanan kesehatan nasional.",
+  },
+  {
+    day: "10",
+    month: "Mei",
+    year: "2025",
+    status: "Pendidikan",
+    title: "Pendidikan Berkelanjutan Manajemen Mutu Pelayanan Rumah Sakit",
+    description:
+      "Program pendidikan berkelanjutan untuk meningkatkan pemahaman tenaga kesehatan terkait manajemen mutu dan keselamatan pasien.",
+  },
+  {
+    day: "22",
+    month: "Jun",
+    year: "2025",
+    status: "Pelatihan",
+    title: "Pelatihan Standar Operasional Prosedur Pelayanan Terpadu",
+    description:
+      "Pelatihan penerapan standar operasional prosedur (SOP) pelayanan terpadu guna meningkatkan efisiensi dan kualitas layanan rumah sakit.",
   },
 ];
 </script>
+
+<style scoped>
+.fade-down-enter-active,
+.fade-down-leave-active {
+  transition: all 0.45s ease;
+}
+
+.fade-down-enter-from {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.fade-down-leave-to {
+  opacity: 0;
+  transform: translateY(24px);
+}
+</style>

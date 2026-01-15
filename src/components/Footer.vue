@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-45 pb-5 bg-transparent transition-all">
+  <div class="pt-20 pb-5 bg-transparent transition-all">
     <div class="max-w-7xl mx-auto px-4 transition-all">
       <!-- Card Logos -->
       <div class="mb-5 bg-gray-100 rounded-lg shadow text-center">
@@ -76,14 +76,14 @@
 
         <p class="text-gray-700 leading-relaxed transition-all">
           <b>Alamat :</b>
-          <span class="text-green-600 font-semibold">
+          <span class="text-green-600 font-semibold hover:text-yellow-500">
             Jl. Mayjend. Prof. Dr. Moestopo No. 6-8, Kecamatan Gubeng, Kelurahan
             Airlangga, Kota Surabaya 60286
           </span>
           <br />
 
           <b>Telepon :</b>
-          <span class="text-green-600 font-semibold">1500995</span>;
+          <span class="text-green-600 font-semibold hover:text-yellow-500">1500995</span>;
           <b> No. WhatsApp :</b>
           <a
             href="https://wa.me/6281216700101"
@@ -96,7 +96,7 @@
           <br />
 
           <b>Email :</b>
-          <span class="text-green-600 font-semibold">
+          <span class="text-green-600 font-semibold hover:text-yellow-500">
             kontak.rsudrsoetomo@jatimprov.go.id
           </span>
         </p>
@@ -106,7 +106,7 @@
           <a
             href="https://www.facebook.com/rsudrsoetomo"
             target="_blank"
-            class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-600 text-white hover:opacity-80 transition"
+            class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-600 text-white hover:opacity-80 transition"
           >
             <i class="fab fa-facebook-f"></i>
           </a>

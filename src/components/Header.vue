@@ -7,7 +7,7 @@
   >
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
-      <img src="../assets/logo-rsds-baru.png" alt="Logo" class="h-10" />
+      <img src="../assets/images/logo-rsds-baru.png" alt="Logo" class="h-10" />
       <div class="flex items-center gap-3">
         <span
           :class="scrolled ? 'text-gray-900' : 'text-white'"
@@ -133,16 +133,13 @@
           </button>
 
           <div
-            class="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden"
+            class="absolute top-full left-0 mt-3 w-60 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden"
           >
             <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Diklat
+              Pendidikan dan Pelatihan
             </a>
             <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Litbang
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Webinar
+              Penelitian dan Pengembangan
             </a>
           </div>
         </div>
@@ -237,7 +234,7 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 
 const scrolled = ref(false);

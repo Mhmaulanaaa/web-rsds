@@ -15,7 +15,7 @@
         alt=""
       />
 
-      <h4 class="text-lg font-semibold text-gray-900 leading-snug whitespace-pre-line">
+      <h4 class="text-md font-semibold text-gray-900 leading-snug whitespace-pre-line">
         {{ item.title }}
       </h4>
 
