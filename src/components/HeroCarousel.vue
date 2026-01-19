@@ -21,7 +21,7 @@
         <span
           class="inline-block mb-4 text-sm font-semibold tracking-widest text-green-300"
         >
-          RUMAH SAKIT UMUM DAERAH
+          RUMAH SAKIT UMUM DAERAH DR. SOETOMO
         </span>
 
         <h1 class="text-white text-5xl md:text-6xl font-bold leading-tight max-w-3xl">
@@ -29,8 +29,8 @@
         </h1>
 
         <p class="mt-6 max-w-xl text-white/90 text-lg">
-          RSUD berkomitmen memberikan pelayanan kesehatan yang bermutu, aman, dan
-          berorientasi pada keselamatan pasien.
+          Rumah Sakit Umum Daerah Dr. Soetomo Surabaya berkomitmen memberikan pelayanan
+          kesehatan yang bermutu, aman, dan berorientasi pada keselamatan pasien.
         </p>
 
         <!-- CTA -->
@@ -85,13 +85,28 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 const slides = [
   {
-    image: new URL("../assets/images/rsds1.jpg", import.meta.url).href,
+    image: new URL("../assets/images/gedung1.webp", import.meta.url).href,
   },
   {
-    image: new URL("../assets/images/rsds2.jpg", import.meta.url).href,
+    image: new URL("../assets/images/gedung2.webp", import.meta.url).href,
   },
   {
-    image: new URL("../assets/images/rsds3.webp", import.meta.url).href,
+    image: new URL("../assets/images/gedung3.webp", import.meta.url).href,
+  },
+  {
+    image: new URL("../assets/images/gedung4.webp", import.meta.url).href,
+  },
+  {
+    image: new URL("../assets/images/gedung5.webp", import.meta.url).href,
+  },
+  {
+    image: new URL("../assets/images/gedung6.webp", import.meta.url).href,
+  },
+  {
+    image: new URL("../assets/images/gedung7.webp", import.meta.url).href,
+  },
+  {
+    image: new URL("../assets/images/gedung8.webp", import.meta.url).href,
   },
 ];
 

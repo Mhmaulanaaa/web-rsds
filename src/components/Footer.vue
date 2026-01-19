@@ -6,63 +6,16 @@
         <div class="py-12 flex flex-wrap justify-center items-center gap-4">
           <!-- Logo Item -->
           <a
-            v-for="(item, index) in [
-              {
-                url: 'https://jatimprov.go.id/',
-                img: 'pemprovjatim.svg',
-                alt: 'Pemerintah Provinsi Jawa Timur',
-              },
-              {
-                url: 'https://dinkes.jatimprov.go.id/',
-                img: 'dinkesjatim.svg',
-                alt: 'Dinas Kesehatan Provinsi Jawa Timur',
-              },
-              {
-                url: 'https://kominfo.jatimprov.go.id/',
-                img: 'diskominfojatim.svg',
-                alt: 'Dinas Kominfo Provinsi Jawa Timur',
-              },
-              {
-                url: 'https://ppid.jatimprov.go.id/',
-                img: 'ppidjatim.svg',
-                alt: 'PPID Provinsi Jawa Timur',
-              },
-              {
-                url: 'https://spse.inaproc.id/jatimprov',
-                img: 'inaprocspse.svg',
-                alt: 'INAPROC SPSE Provinsi Jawa Timur',
-              },
-              {
-                url:
-                  'https://www.lapor.go.id/instansi/rumah-sakit-umum-daerah-dr-soetomo',
-                img: 'lapor.svg',
-                alt: 'LAPOR! RSUD Dr. Soetomo',
-              },
-              {
-                url: 'https://sippn.menpan.go.id/instansi/rsud-dr-soetomo-169816',
-                img: 'sippn.svg',
-                alt: 'SIPPN CariYanlik RSUD Dr. Soetomo',
-              },
-              {
-                url: 'https://kemkes.go.id/id/home',
-                img: 'kemenkes.svg',
-                alt: 'Kementerian Kesehatan',
-              },
-              {
-                url: 'https://komisiinformasi.go.id/',
-                img: 'kip.svg',
-                alt: 'Komisi Informasi Pusat Republik Indonesia',
-              },
-            ]"
+            v-for="(item, index) in logos"
             :key="index"
             :href="item.url"
             target="_blank"
             class="mx-4 transition-all"
           >
             <img
-              :src="`https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/${item.img}`"
-              class="h-22.5 my-2 transition-transform duration-300 hover:scale-110"
+              :src="item.img"
               :alt="item.alt"
+              class="h-22.5 my-2 transition-transform duration-300 hover:scale-110"
             />
           </a>
         </div>
@@ -164,4 +117,62 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import pemprovJatim from "@/assets/images/pemprovjatim2.png";
+import dinkesJatim from "@/assets/images/dinkesjatim.png";
+import diskominfoJatim from "@/assets/images/diskominfojatim.png";
+import ppidJatim from "@/assets/images/ppidjatim.png";
+import inaproc from "@/assets/images/inaprocspse.png";
+import lapor from "@/assets/images/lapor.png";
+import sippn from "@/assets/images/sippn.png";
+import kemenkes from "@/assets/images/kemenkes.png";
+import kip from "@/assets/images/kip.png";
+
+const logos = [
+  {
+    url: "https://jatimprov.go.id/",
+    img: pemprovJatim,
+    alt: "Pemerintah Provinsi Jawa Timur",
+  },
+  {
+    url: "https://dinkes.jatimprov.go.id/",
+    img: dinkesJatim,
+    alt: "Dinas Kesehatan Provinsi Jawa Timur",
+  },
+  {
+    url: "https://kominfo.jatimprov.go.id/",
+    img: diskominfoJatim,
+    alt: "Dinas Kominfo Provinsi Jawa Timur",
+  },
+  {
+    url: "https://ppid.jatimprov.go.id/",
+    img: ppidJatim,
+    alt: "PPID Provinsi Jawa Timur",
+  },
+  {
+    url: "https://spse.inaproc.id/jatimprov",
+    img: inaproc,
+    alt: "INAPROC SPSE Provinsi Jawa Timur",
+  },
+  {
+    url: "https://www.lapor.go.id/instansi/rumah-sakit-umum-daerah-dr-soetomo",
+    img: lapor,
+    alt: "LAPOR! RSUD Dr. Soetomo",
+  },
+  {
+    url: "https://sippn.menpan.go.id/instansi/rsud-dr-soetomo-169816",
+    img: sippn,
+    alt: "SIPPN CariYanlik RSUD Dr. Soetomo",
+  },
+  {
+    url: "https://kemkes.go.id/id/home",
+    img: kemenkes,
+    alt: "Kementerian Kesehatan",
+  },
+  {
+    url: "https://komisiinformasi.go.id/",
+    img: kip,
+    alt: "Komisi Informasi Pusat Republik Indonesia",
+  },
+];
+</script>

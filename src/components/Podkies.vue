@@ -1,12 +1,15 @@
 <template>
-  <section class="relative py-10 overflow-hidden">
-    <div class="relative max-w-7xl mx-auto px-6">
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-6">
       <!-- Header -->
-      <div class="text-center mb-16 flex justify-center">
-        <img src="../assets/images/podkies.svg" alt="Logo" class="h-40" />
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold text-gray-900">Podcast RSUD Dr. Soetomo</h2>
+        <p class="mt-2 text-gray-600">
+          Edukasi & informasi kesehatan dari RSUD Dr. Soetomo
+        </p>
       </div>
 
-      <!-- Podcast Grid -->
+      <!-- GRID -->
       <TransitionGroup
         name="fade-slide"
         tag="div"
@@ -17,19 +20,48 @@
           :key="video.id"
           class="rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-lg hover:shadow-xl transition"
         >
-          <!-- Youtube Embed -->
-          <div class="aspect-video">
+          <!-- VIDEO -->
+          <div class="relative aspect-video">
+            <!-- Thumbnail -->
+            <template v-if="playingVideo !== video.id">
+              <img
+                :src="getThumb(video.id)"
+                class="w-full h-full object-cover bg-gray-200"
+                @error="onThumbError($event, video.id)"
+              />
+
+              <!-- Overlay -->
+              <div
+                class="absolute inset-0 bg-black/10 flex items-center justify-center cursor-pointer"
+                @click="playVideo(video.id)"
+              >
+                <div
+                  class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-2xl text-black shadow-lg"
+                >
+                  ▶
+                </div>
+              </div>
+            </template>
+
+            <!-- IFRAME -->
             <iframe
-              :src="`https://www.youtube.com/embed/${video.id}`"
+              v-else
+              :src="`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1`"
               class="w-full h-full"
               frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
               allowfullscreen
-              loading="lazy"
             ></iframe>
           </div>
 
-          <!-- Content -->
+          <!-- CONTENT -->
           <div class="p-4">
             <h3 class="text-sm font-bold text-gray-900 line-clamp-2">
               {{ video.title }}
@@ -41,13 +73,13 @@
         </div>
       </TransitionGroup>
 
-      <!-- CTA Expand -->
+      <!-- BUTTON -->
       <div class="text-center mt-14">
         <button
           @click="toggleShow"
-          class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
+          class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition"
         >
-          {{ showAll ? "Lihat Lebih Sedikit" : "Lihat Semua Podcast" }}
+          {{ showAll ? "Lihat Lebih Sedikit" : "Lihat Selengkapnya" }}
           <span
             class="transition-transform duration-300"
             :class="showAll ? 'rotate-180' : ''"
@@ -64,7 +96,7 @@
 import { ref, computed } from "vue";
 
 const showAll = ref(false);
-const limit = 4;
+const playingVideo = ref<string | null>(null);
 
 const videos = [
   {
@@ -111,24 +143,48 @@ const videos = [
   },
 ];
 
-const visibleVideos = computed(() => (showAll.value ? videos : videos.slice(0, limit)));
+const visibleVideos = computed(() => (showAll.value ? videos : videos.slice(0, 4)));
 
 const toggleShow = () => {
   showAll.value = !showAll.value;
+};
+
+const playVideo = (id: string) => {
+  playingVideo.value = id;
+};
+
+const getThumb = (id: string) => {
+  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+};
+
+const onThumbError = (e: Event, id: string) => {
+  const img = e.target as HTMLImageElement;
+
+  if (img.src.includes("maxresdefault")) {
+    img.src = `https://img.youtube.com/vi/${id}/sddefault.jpg`;
+  } else if (img.src.includes("sddefault")) {
+    img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+  } else if (img.src.includes("hqdefault")) {
+    img.src = `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
+  } else {
+    img.src = "/images/thumb-placeholder.jpg"; // lokal
+  }
 };
 </script>
 
 <style scoped>
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  transition: all 0.4s ease;
+  transition: all 0.45s ease;
 }
+
 .fade-slide-enter-from {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
 }
+
 .fade-slide-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(30px);
 }
 </style>

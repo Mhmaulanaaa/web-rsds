@@ -43,7 +43,7 @@
 
               <a
                 :href="item.link"
-                class="inline-flex items-center gap-2 mt-4 text-green-700 font-semibold text-sm"
+                class="inline-flex items-center gap-2 mt-4 text-emerald-600 hover:text-emerald-700 font-semibold text-sm"
               >
                 Baca Selengkapnya →
               </a>
@@ -55,7 +55,7 @@
         <div class="text-center mt-12">
           <button
             @click="toggleShowBerita"
-            class="inline-flex items-center me-2 gap-2 px-8 py-3 rounded-full bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
+            class="inline-flex items-center me-2 gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition shadow-lg text-sm"
           >
             {{ showAll ? "Berita Lebih Sedikit" : "Berita Selengkapnya" }}
             <span
@@ -66,7 +66,7 @@
             </span>
           </button>
           <button
-            class="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-emerald-600 text-emerald-700 font-semibold hover:bg-emerald-600 hover:text-white transition"
+            class="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-emerald-600 text-emerald-700 font-semibold hover:bg-emerald-600 hover:text-white transition text-sm"
           >
             Semua Berita
           </button>
@@ -108,7 +108,7 @@
 
               <a
                 :href="item.link"
-                class="inline-block mt-3 text-sm text-emerald-700 font-semibold"
+                class="inline-block mt-3 text-sm text-emerald-600 hover:text-emerald-700 font-semibold"
               >
                 Baca →
               </a>
@@ -120,7 +120,7 @@
         <div class="text-center mt-12">
           <button
             @click="toggleShowSeputarJatim"
-            class="inline-flex items-center me-2 gap-2 px-8 py-3 rounded-full bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
+            class="inline-flex items-center me-2 gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition shadow-lg text-sm"
           >
             {{
               showAllSeputarJatim
@@ -135,7 +135,7 @@
             </span>
           </button>
           <button
-            class="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-emerald-600 text-emerald-700 font-semibold hover:bg-emerald-600 hover:text-white transition"
+            class="inline-flex items-center mt-2 gap-2 px-8 py-3 rounded-full border border-emerald-600 text-emerald-700 font-semibold hover:bg-emerald-600 hover:text-white transition text-sm"
           >
             Semua Berita Jatim
           </button>

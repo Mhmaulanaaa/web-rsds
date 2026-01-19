@@ -137,42 +137,42 @@ const rujukan = [
   // 1
   {
     title: "Pelayanan Ortorik Prosterik",
-    icon: new URL("../assets/images/rnPbjrm.png", import.meta.url).href,
+    icon: new URL("../assets/images/rnPop.png", import.meta.url).href,
     link: "/rujukan/bankjaringan",
   },
   {
     title: "Pelayanan Paliatif dan Bebas Nyeri",
-    icon: new URL("../assets/images/rnPbt.png", import.meta.url).href,
+    icon: new URL("../assets/images/rnPpbn.png", import.meta.url).href,
     link: "/rujukan/bayitabung",
   },
   {
-    title: "Pelayanan Sport Center",
-    icon: new URL("../assets/images/rnPemi.png", import.meta.url).href,
+    title: "Pelayanan Sport Clinic",
+    icon: new URL("../assets/images/rnPsc.png", import.meta.url).href,
     link: "/rujukan/endoskopi",
   },
   {
     title: "Pelayanan Sistem Saraf Terintegrasi",
-    icon: new URL("../assets/images/rnPet.png", import.meta.url).href,
+    icon: new URL("../assets/images/rnPsst.png", import.meta.url).href,
     link: "/rujukan/endokrin",
   },
   {
     title: "Pelayanan Tumbuh Kembang Anak",
-    icon: new URL("../assets/images/rnPgit.png", import.meta.url).href,
+    icon: new URL("../assets/images/rnPtka.png", import.meta.url).href,
     link: "/rujukan/ginjalterpadu",
   },
   {
     title: "Program Pencegahan Resistensi Antimikroba",
-    icon: new URL("../assets/images/rnPgt.png", import.meta.url).href,
+    icon: new URL("../assets/images/rnPpra.png", import.meta.url).href,
     link: "/rujukan/geriatriterpadu",
   },
   {
     title: "Pusat Pelayanan Jantung Terpadu",
-    icon: new URL("../assets/images/rnPinere.png", import.meta.url).href,
+    icon: new URL("../assets/images/rnPpjt.png", import.meta.url).href,
     link: "/rujukan/penyakitinfeksi",
   },
   {
     title: "Pusat Pengembangan Layanan Kanker",
-    icon: new URL("../assets/images/rnPks.png", import.meta.url).href,
+    icon: new URL("../assets/images/rnPplk.png", import.meta.url).href,
     link: "/rujukan/kembarsiam",
   },
 ];

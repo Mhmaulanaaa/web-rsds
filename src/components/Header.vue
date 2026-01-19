@@ -6,243 +6,172 @@
     ]"
   >
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <!-- Logo -->
-      <img src="../assets/images/logo-rsds-baru.png" alt="Logo" class="h-10" />
-      <div class="flex items-center gap-3">
-        <span
-          :class="scrolled ? 'text-gray-900' : 'text-white'"
-          class="font-semibold text-sm leading-tight hidden md:block"
-        >
-        </span>
-      </div>
+      <!-- LOGO -->
+      <RouterLink to="/" class="flex items-center gap-3">
+        <img src="../assets/images/logo-rsds-baru.png" alt="Logo" class="h-10" />
+      </RouterLink>
 
-      <!-- Navigation -->
+      <!-- ================= DESKTOP NAV ================= -->
       <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
-        <!-- Link -->
-        <a
-          class="cursor-pointer transition"
-          :class="
-            scrolled
-              ? 'text-gray-800 hover:text-green-600'
-              : 'text-white hover:text-green-300'
-          "
-        >
-          Beranda
-        </a>
+        <!-- BERANDA -->
+        <RouterLink to="/" :class="linkClass('/')">Beranda</RouterLink>
 
-        <!-- Dropdown 1 -->
+        <!-- PROFIL -->
         <div class="relative group">
-          <button
-            class="flex items-center gap-1 cursor-pointer transition"
-            :class="
-              scrolled
-                ? 'text-gray-800 hover:text-green-600'
-                : 'text-white hover:text-green-300'
-            "
-          >
+          <button :class="dropdownClass(profil.base)">
             Profil
             <i class="fas fa-chevron-down text-xs"></i>
           </button>
 
           <div
-            class="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden"
+            class="absolute top-full left-0 mt-3 w-64 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden"
           >
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Tentang Kami
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Kedudukan
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Tupoksi
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Visi dan Misi
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Struktur Organisasi
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Sumber Daya Manusia
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Penghargaan dan HAKI
-            </a>
+            <RouterLink
+              v-for="item in profil.items"
+              :key="item.to"
+              :to="item.to"
+              :class="dropdownItemClass(item.to)"
+            >
+              {{ item.label }}
+            </RouterLink>
           </div>
         </div>
 
-        <!-- Dropdown 2 -->
+        <!-- PELAYANAN -->
         <div class="relative group">
-          <button
-            class="flex items-center gap-1 cursor-pointer transition"
-            :class="
-              scrolled
-                ? 'text-gray-800 hover:text-green-600'
-                : 'text-white hover:text-green-300'
-            "
-          >
+          <button :class="dropdownClass(pelayanan.base)">
             Pelayanan
             <i class="fas fa-chevron-down text-xs"></i>
           </button>
 
           <div
-            class="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden"
+            class="absolute top-full left-0 mt-3 w-64 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden"
           >
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Rawat Jalan
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Rawat Inap
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Rawat Darurat
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Graha Amerta
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Rujukan Nasional
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Daftar Dokter
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Informasi
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Standar Pelayanan Publik
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Panduan Praktik Klinik
-            </a>
+            <RouterLink
+              v-for="item in pelayanan.items"
+              :key="item.to"
+              :to="item.to"
+              :class="dropdownItemClass(item.to)"
+            >
+              {{ item.label }}
+            </RouterLink>
           </div>
         </div>
 
-        <!-- Dropdown 3 -->
+        <!-- DIKLIT -->
         <div class="relative group">
-          <button
-            class="flex items-center gap-1 cursor-pointer transition"
-            :class="
-              scrolled
-                ? 'text-gray-800 hover:text-green-600'
-                : 'text-white hover:text-green-300'
-            "
-          >
+          <button :class="dropdownClass(diklit.base)">
             Diklit
             <i class="fas fa-chevron-down text-xs"></i>
           </button>
 
           <div
-            class="absolute top-full left-0 mt-3 w-60 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden"
+            class="absolute top-full left-0 mt-3 w-64 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden"
           >
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Pendidikan dan Pelatihan
-            </a>
-            <a class="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100">
-              Penelitian dan Pengembangan
-            </a>
+            <RouterLink
+              v-for="item in diklit.items"
+              :key="item.to"
+              :to="item.to"
+              :class="dropdownItemClass(item.to)"
+            >
+              {{ item.label }}
+            </RouterLink>
           </div>
         </div>
 
-        <a
-          class="cursor-pointer transition"
-          :class="
-            scrolled
-              ? 'text-gray-800 hover:text-green-600'
-              : 'text-white hover:text-green-300'
-          "
-        >
+        <!-- SINGLE LINKS -->
+        <RouterLink to="/promosi-kesehatan" :class="linkClass('/promosi-kesehatan')">
           Promosi Kesehatan
-        </a>
+        </RouterLink>
 
-        <a
-          class="cursor-pointer transition"
-          :class="
-            scrolled
-              ? 'text-gray-800 hover:text-green-600'
-              : 'text-white hover:text-green-300'
-          "
+        <RouterLink to="/laporan" :class="linkClass('/laporan')">Laporan</RouterLink>
+        <RouterLink to="/reformasi-birokrasi" :class="linkClass('/reformasi-birokrasi')">
+          Reformasi Birokrasi
+        </RouterLink>
+        <RouterLink to="/csirt" :class="linkClass('/csirt')">CSIRT</RouterLink>
+        <RouterLink to="/ppid" :class="linkClass('/ppid')">PPID</RouterLink>
+        <RouterLink to="/pengaduan" :class="linkClass('/pengaduan')"
+          >Pengaduan</RouterLink
         >
-          Laporan
-        </a>
-
-        <a
-          class="cursor-pointer transition"
-          :class="
-            scrolled
-              ? 'text-gray-800 hover:text-green-600'
-              : 'text-white hover:text-green-300'
-          "
-        >
-          Reformasi Biokrasi
-        </a>
-
-        <a
-          class="cursor-pointer transition"
-          :class="
-            scrolled
-              ? 'text-gray-800 hover:text-green-600'
-              : 'text-white hover:text-green-300'
-          "
-        >
-          CSIRT
-        </a>
-
-        <a
-          class="cursor-pointer transition"
-          :class="
-            scrolled
-              ? 'text-gray-800 hover:text-green-600'
-              : 'text-white hover:text-green-300'
-          "
-        >
-          PPID
-        </a>
-
-        <a
-          class="cursor-pointer transition"
-          :class="
-            scrolled
-              ? 'text-gray-800 hover:text-green-600'
-              : 'text-white hover:text-green-300'
-          "
-        >
-          Pengaduan
-        </a>
       </nav>
-
-      <!-- Search -->
-      <!-- <div class="hidden md:flex items-center">
-        <div
-          class="flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur transition"
-          :class="scrolled ? 'border-gray-300' : 'border-white/50'"
-        >
-          <i
-            class="fas fa-search text-sm"
-            :class="scrolled ? 'text-gray-500' : 'text-white'"
-          ></i>
-
-          <input
-            type="text"
-            placeholder="Pencarian"
-            class="bg-transparent outline-none text-sm w-32 placeholder:text-white/70"
-            :class="scrolled ? 'text-gray-700 placeholder:text-gray-400' : 'text-white'"
-          />
-        </div>
-      </div> -->
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const scrolled = ref(false);
 
+/* ================= MENU DATA ================= */
+const profil = {
+  base: "/profil",
+  items: [
+    { label: "Tentang Kami", to: "/profil/tentang-kami" },
+    { label: "Kedudukan", to: "/profil/kedudukan" },
+    { label: "Tupoksi", to: "/profil/tupoksi" },
+    { label: "Visi dan Misi", to: "/profil/visi-misi" },
+    { label: "Struktur Organisasi", to: "/profil/struktur-organisasi" },
+    { label: "Sumber Daya Manusia", to: "/profil/sdm" },
+    { label: "Penghargaan dan HAKI", to: "/profil/penghargaan-haki" },
+  ],
+};
+
+const pelayanan = {
+  base: "/pelayanan",
+  items: [
+    { label: "Rawat Jalan", to: "/pelayanan/rawat-jalan" },
+    { label: "Rawat Inap", to: "/pelayanan/rawat-inap" },
+    { label: "Rawat Darurat", to: "/pelayanan/rawat-darurat" },
+    { label: "Graha Amerta", to: "/pelayanan/graha-amerta" },
+    { label: "Rujukan Nasional", to: "/pelayanan/rujukan-nasional" },
+    { label: "Daftar Dokter", to: "/pelayanan/daftar-dokter" },
+    { label: "Informasi", to: "/pelayanan/informasi" },
+    { label: "Standar Pelayanan Publik", to: "/pelayanan/standar-pelayanan" },
+    { label: "Panduan Praktik Klinik", to: "/pelayanan/panduan-praktik-klinik" },
+  ],
+};
+
+const diklit = {
+  base: "/diklit",
+  items: [
+    { label: "Pendidikan dan Pelatihan", to: "/diklit/pendidikan-pelatihan" },
+    { label: "Penelitian dan Pengembangan", to: "/diklit/penelitian-pengembangan" },
+  ],
+};
+
+/* ================= SCROLL ================= */
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50;
 };
 
+/* ================= CLASS HELPERS ================= */
+const linkClass = (path: string) => {
+  const active = route.path === path;
+  if (active) return "text-green-400 font-semibold";
+
+  return scrolled.value
+    ? "text-gray-800 hover:text-green-400"
+    : "text-white hover:text-green-400";
+};
+
+const dropdownClass = (base: string) => {
+  const active = route.path.startsWith(base);
+  if (active) return "flex items-center gap-1 text-green-400 font-semibold";
+
+  return scrolled.value
+    ? "flex items-center gap-1 text-gray-800 hover:text-green-400"
+    : "flex items-center gap-1 text-white hover:text-green-400";
+};
+
+const dropdownItemClass = (path: string) =>
+  route.path === path
+    ? "block px-5 py-3 text-sm bg-gray-100 text-green-400 font-semibold"
+    : "block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100";
+
+/* ================= LIFECYCLE ================= */
 onMounted(() => window.addEventListener("scroll", handleScroll));
 onUnmounted(() => window.removeEventListener("scroll", handleScroll));
 </script>
