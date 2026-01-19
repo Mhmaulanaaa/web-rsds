@@ -1,5 +1,4 @@
 <template>
-  <Header />
   <HeroCarousel />
   <Registration />
   <Services />
@@ -13,7 +12,6 @@
     <Innovation />
     <Agenda />
   </section>
-  <Footer />
 </template>
 
 <script setup>

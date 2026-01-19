@@ -61,14 +61,14 @@
               </p>
 
               <!-- FOOTER -->
-              <div class="mt-auto">
+              <!-- <div class="mt-auto">
                 <a
                   href="#"
                   class="text-sm font-medium text-emerald-600 hover:text-emerald-700"
                 >
                   Baca Selengkapnya →
                 </a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -77,6 +77,11 @@
       <!-- Button -->
       <div class="mt-16 text-center">
         <button
+          class="inline-flex items-center mt-2 gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition"
+        >
+          Website SICERDAS ↗
+        </button>
+        <!-- <button
           @click="toggleShowAgenda"
           class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition"
         >
@@ -87,7 +92,7 @@
           >
             ▼
           </span>
-        </button>
+        </button> -->
       </div>
     </div>
   </section>
@@ -128,33 +133,6 @@ const agenda = [
     title: "Pelatihan Penggunaan Aplikasi SIMRS Versi Terbaru",
     description:
       "Pelatihan teknis bagi tenaga medis dan administrasi terkait fitur dan pembaruan terbaru pada aplikasi SIMRS rumah sakit.",
-  },
-  {
-    day: "20",
-    month: "Apr",
-    year: "2025",
-    status: "Pelatihan",
-    title: "Workshop Integrasi Sistem Informasi Rumah Sakit",
-    description:
-      "Workshop dan diskusi teknis mengenai integrasi sistem informasi rumah sakit dengan platform layanan kesehatan nasional.",
-  },
-  {
-    day: "10",
-    month: "Mei",
-    year: "2025",
-    status: "Pendidikan",
-    title: "Pendidikan Berkelanjutan Manajemen Mutu Pelayanan Rumah Sakit",
-    description:
-      "Program pendidikan berkelanjutan untuk meningkatkan pemahaman tenaga kesehatan terkait manajemen mutu dan keselamatan pasien.",
-  },
-  {
-    day: "22",
-    month: "Jun",
-    year: "2025",
-    status: "Pelatihan",
-    title: "Pelatihan Standar Operasional Prosedur Pelayanan Terpadu",
-    description:
-      "Pelatihan penerapan standar operasional prosedur (SOP) pelayanan terpadu guna meningkatkan efisiensi dan kualitas layanan rumah sakit.",
   },
 ];
 </script>

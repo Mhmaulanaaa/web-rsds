@@ -3,7 +3,7 @@
   <section class="relative overflow-hidden py-1">
     <div class="relative max-w-7xl mx-auto px-6">
       <!-- ================= Innovasi ================= -->
-      <div class="mb-24">
+      <div class="mb-10">
         <!-- Header -->
         <div class="text-center mb-16">
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Inovasi</h2>
@@ -54,7 +54,7 @@
 
         <!-- Button -->
         <div class="mt-16 text-center">
-          <button
+          <!-- <button
             @click="toggleShowInovasi"
             class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition"
           >
@@ -65,6 +65,11 @@
             >
               ▼
             </span>
+          </button> -->
+          <button
+            class="inline-flex items-center mt-2 gap-2 px-8 py-3 rounded-full border border-emerald-600 text-emerald-700 font-semibold hover:bg-emerald-600 hover:text-white transition text-sm"
+          >
+            Semua Innovasi
           </button>
         </div>
       </div>
@@ -85,22 +90,6 @@ const toggleShowInovasi = () => {
 };
 
 const inovasi = [
-  {
-    title: "Inovasi dan Dedikasi ASN RSUD Dr. Soetomo",
-    image: new URL("../assets/images/rsds1.jpg", import.meta.url).href,
-  },
-  {
-    title: "Inovasi Duta ASI untuk Ibu & Anak",
-    image: new URL("../assets/images/rsds1.jpg", import.meta.url).href,
-  },
-  {
-    title: "Inovasi ABI (Alat Bantu Ibu) untuk IMD",
-    image: new URL("../assets/images/rsds1.jpg", import.meta.url).href,
-  },
-  {
-    title: "Inovasi IHA CIAMIK Pelayanan Terpadu",
-    image: new URL("../assets/images/rsds1.jpg", import.meta.url).href,
-  },
   {
     title: "Inovasi dan Dedikasi ASN RSUD Dr. Soetomo",
     image: new URL("../assets/images/rsds1.jpg", import.meta.url).href,

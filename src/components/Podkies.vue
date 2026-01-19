@@ -1,12 +1,9 @@
 <template>
-  <section class="py-16">
+  <section class="py-5">
     <div class="max-w-7xl mx-auto px-6">
       <!-- Header -->
-      <div class="text-center mb-14">
-        <h2 class="text-3xl font-bold text-gray-900">Podcast RSUD Dr. Soetomo</h2>
-        <p class="mt-2 text-gray-600">
-          Edukasi & informasi kesehatan dari RSUD Dr. Soetomo
-        </p>
+      <div class="text-center mb-15 flex justify-center">
+        <img src="../assets/images/podkies.svg" alt="Logo" class="h-40" />
       </div>
 
       <!-- GRID -->
@@ -63,11 +60,14 @@
 
           <!-- CONTENT -->
           <div class="p-4">
+            <p class="mt-1 text-xs text-green-600 font-semibold">
+              {{ video.episode }}
+            </p>
             <h3 class="text-sm font-bold text-gray-900 line-clamp-2">
               {{ video.title }}
             </h3>
             <p class="mt-1 text-xs text-gray-500">
-              {{ video.episode }}
+              {{ video.description }}
             </p>
           </div>
         </div>
@@ -101,45 +101,52 @@ const playingVideo = ref<string | null>(null);
 const videos = [
   {
     id: "nUxwzXVx9c0",
-    title: "WORLD ANTIMICROBIAL RESISTANCE AWARENESS WEEK",
-    episode: "Podcast RSUD Dr. Soetomo",
+    title: "PEKAN KESADARAN RESISTENSI ANTIMIKROBA SEDUNIA",
+    episode: "Episode 53",
+    description: "Podcast RSUD Dr. Soetomo",
   },
   {
     id: "oT7Dc6Yui7o",
     title: "UNIT KERJA ORTOTIK PROSTETIK DI RSUD DR. SOETOMO",
-    episode: "Podcast RSUD Dr. Soetomo",
+    episode: "Episode 52",
+    description: "Podcast RSUD Dr. Soetomo",
   },
   {
     id: "6XauWFkGQKk",
-    title:
-      "SHORTNESS OF BREATH, REMEMBER COPD! [CHRONIC OBSTRUCTIVE PULMONARY DISEASE DAY]",
-    episode: "Podcast RSUD Dr. Soetomo",
+    title: "SESAK NAPAS, INGAT PPOK! [HARI PENYAKIT PARU OBSTRUKTIF KRONIS]",
+    episode: "Episode 51",
+    description: "Podcast RSUD Dr. Soetomo",
   },
   {
     id: "QZwZypCVXy0",
     title: "DIABETES AND WELLBEING [WORLD DIABETES DAY]",
-    episode: "Podcast RSUD Dr. Soetomo",
+    episode: "Episode 50",
+    description: "Podcast RSUD Dr. Soetomo",
   },
   {
     id: "u2ZX06GDTXk",
     title: "GENERASI SEHAT, MASA DEPAN HEBAT [HARI KESEHATAN NASIONAL 2025]",
-    episode: "Podcast RSUD Dr. Soetomo",
+    episode: "Episode 49",
+    description: "Podcast RSUD Dr. Soetomo",
   },
   {
     id: "GAGcgPsqG28",
     title:
       "APA YANG HARUS DIKETAHUI ORANG TUA TERHADAP WABAH CAMPAK [WASPADA WABAH CAMPAK]",
-    episode: "Podcast RSUD Dr. Soetomo",
+    episode: "Episode 48",
+    description: "Podcast RSUD Dr. Soetomo",
   },
   {
     id: "6KHUnR-iwhM",
-    title: "EVERY MINUTE COUNTS [WORLD STROKE DAY]",
-    episode: "Podcast RSUD Dr. Soetomo",
+    title: "SETIAP MENIT BERHARGA [WORLD STROKE DAY]",
+    episode: "Episode 47",
+    description: "Podcast RSUD Dr. Soetomo",
   },
   {
     id: "izUknyj3nY0",
     title: "PSIKIATRI DAN MITIGASI BENCANA [HARI KESEHATAN JIWA SEDUNIA 2025]",
-    episode: "Podcast RSUD Dr. Soetomo",
+    episode: "Episode 46",
+    description: "Podcast RSUD Dr. Soetomo",
   },
 ];
 

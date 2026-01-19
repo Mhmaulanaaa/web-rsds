@@ -1,18 +1,6 @@
 <template>
   <Header />
-  <HeroCarousel />
-  <Registration />
-  <Services />
-  <News />
-  <Podkies />
-  <section class="relative overflow-hidden py-5">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#ffffff] via-[#e6f7f1]"></div>
-    <div
-      class="absolute left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#e6f7f1]/40 rounded-full blur-3xl"
-    ></div>
-    <Innovation />
-    <Agenda />
-  </section>
+
   <Footer />
 </template>
 

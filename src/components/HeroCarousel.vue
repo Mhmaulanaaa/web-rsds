@@ -1,5 +1,7 @@
 <template>
-  <section class="relative h-screen overflow-hidden">
+  <section class="relative h-screen overflow-hidden -mt-20">
+    <!-- <section class="relative h-screen overflow-hidden" style="margin-top: -80px"> -->
+
     <!-- Background Slides -->
     <transition-group name="fade" tag="div">
       <div

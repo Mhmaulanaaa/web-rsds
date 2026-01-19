@@ -40,31 +40,12 @@
               <p class="mt-2 text-sm text-gray-600 line-clamp-3 min-h-[4.5rem]">
                 {{ item.excerpt }}
               </p>
-
-              <a
-                :href="item.link"
-                class="inline-flex items-center gap-2 mt-4 text-emerald-600 hover:text-emerald-700 font-semibold text-sm"
-              >
-                Baca Selengkapnya →
-              </a>
             </div>
           </article>
         </TransitionGroup>
 
         <!-- BUTTON -->
         <div class="text-center mt-12">
-          <button
-            @click="toggleShowBerita"
-            class="inline-flex items-center me-2 gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition shadow-lg text-sm"
-          >
-            {{ showAll ? "Berita Lebih Sedikit" : "Berita Selengkapnya" }}
-            <span
-              class="transition-transform duration-300"
-              :class="showAll ? 'rotate-180' : ''"
-            >
-              ▼
-            </span>
-          </button>
           <button
             class="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-emerald-600 text-emerald-700 font-semibold hover:bg-emerald-600 hover:text-white transition text-sm"
           >
@@ -77,9 +58,6 @@
       <div class="mb-15">
         <div class="text-center mb-12">
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Seputar Jawa Timur</h2>
-          <!-- <p class="mt-3 text-gray-600 max-w-2xl mx-auto">
-            Informasi dan kebijakan kesehatan terkini di wilayah Jawa Timur
-          </p> -->
         </div>
 
         <TransitionGroup
@@ -90,50 +68,29 @@
           <newsjatim
             v-for="item in visibleSeputarJatim"
             :key="item.title"
-            class="rounded-3xl p-6 bg-white border border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-2 hover:border-emerald-100œ hover:shadow-[0_18px_40px_rgba(16,185,129,0.25)]"
+            class="group rounded-3xl bg-white border border-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-2 hover:border-emerald-100 hover:shadow-[0_18px_40px_rgba(16,185,129,0.25)]"
           >
             <img :src="item.image" class="h-50 w-full object-cover" alt="" />
             <div class="p-6">
-              <span class="text-xs text-emerald-600 font-semibold">
+              <span class="text-xs text-green-600 font-semibold">
                 {{ item.date }}
               </span>
 
-              <h3 class="mt-2 font-bold text-gray-900">
+              <h3
+                class="mt-2 text-lg font-bold text-gray-900 line-clamp-2 min-h-[3.5rem] transition-colors group-hover:text-green-700"
+              >
                 {{ item.title }}
               </h3>
 
-              <p class="mt-2 text-sm text-gray-600">
+              <p class="mt-2 text-sm text-gray-600 line-clamp-3 min-h-[4.5rem]">
                 {{ item.excerpt }}
               </p>
-
-              <a
-                :href="item.link"
-                class="inline-block mt-3 text-sm text-emerald-600 hover:text-emerald-700 font-semibold"
-              >
-                Baca →
-              </a>
             </div>
           </newsjatim>
         </TransitionGroup>
 
         <!-- BUTTON -->
         <div class="text-center mt-12">
-          <button
-            @click="toggleShowSeputarJatim"
-            class="inline-flex items-center me-2 gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition shadow-lg text-sm"
-          >
-            {{
-              showAllSeputarJatim
-                ? "Berita Seputar Jatim Lebih Sedikit"
-                : "Berita Seputar Jatim Selengkapnya"
-            }}
-            <span
-              class="transition-transform duration-300"
-              :class="showAllSeputarJatim ? 'rotate-180' : ''"
-            >
-              ▼
-            </span>
-          </button>
           <button
             class="inline-flex items-center mt-2 gap-2 px-8 py-3 rounded-full border border-emerald-600 text-emerald-700 font-semibold hover:bg-emerald-600 hover:text-white transition text-sm"
           >
@@ -202,9 +159,9 @@ const visibleNews = computed(() =>
   showAll.value ? soetomoNews : soetomoNews.slice(0, 6)
 );
 
-const toggleShowBerita = () => {
-  showAll.value = !showAll.value;
-};
+// const toggleShowBerita = () => {
+//   showAll.value = !showAll.value;
+// };
 
 const showAllSeputarJatim = ref(false);
 
@@ -212,33 +169,11 @@ const visibleSeputarJatim = computed(() =>
   showAllSeputarJatim.value ? jatimNews : jatimNews.slice(0, 6)
 );
 
-const toggleShowSeputarJatim = () => {
-  showAllSeputarJatim.value = !showAllSeputarJatim.value;
-};
+// const toggleShowSeputarJatim = () => {
+//   showAllSeputarJatim.value = !showAllSeputarJatim.value;
+// };
 
 const soetomoNews = [
-  {
-    title: "RSUD Dr. Soetomo Resmikan Layanan Digital Terpadu",
-    excerpt:
-      "Transformasi digital untuk meningkatkan kecepatan dan kualitas layanan pasien.",
-    date: "12 Jan 2026",
-    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3",
-    link: "#",
-  },
-  {
-    title: "Klinik Jantung Terpadu Jadi Rujukan Nasional",
-    excerpt: "Pelayanan kardiovaskular komprehensif dengan teknologi mutakhir.",
-    date: "10 Jan 2026",
-    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118",
-    link: "#",
-  },
-  {
-    title: "RSUD Soetomo Raih Penghargaan Pelayanan Publik",
-    excerpt: "Penghargaan atas inovasi dan peningkatan mutu pelayanan.",
-    date: "08 Jan 2026",
-    image: "https://images.unsplash.com/photo-1600959907703-125ba1374a12",
-    link: "#",
-  },
   {
     title: "RSUD Dr. Soetomo Resmikan Layanan Digital Terpadu",
     excerpt:
@@ -286,27 +221,6 @@ const soetomoNews = [
 ];
 
 const jatimNews = [
-  {
-    title: "Pemprov Jatim Perkuat Sistem Kesehatan Daerah",
-    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3",
-    excerpt: "Kolaborasi rumah sakit dan puskesmas se-Jawa Timur.",
-    date: "11 Jan 2026",
-    link: "#",
-  },
-  {
-    title: "Program Pemeriksaan Kesehatan Gratis Diluncurkan",
-    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3",
-    excerpt: "Upaya meningkatkan derajat kesehatan masyarakat Jatim.",
-    date: "09 Jan 2026",
-    link: "#",
-  },
-  {
-    title: "Digitalisasi Data Kesehatan di Jawa Timur",
-    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3",
-    excerpt: "Langkah strategis menuju layanan kesehatan terintegrasi.",
-    date: "06 Jan 2026",
-    link: "#",
-  },
   {
     title: "Pemprov Jatim Perkuat Sistem Kesehatan Daerah",
     image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3",
