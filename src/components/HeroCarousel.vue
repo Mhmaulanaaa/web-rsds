@@ -1,7 +1,5 @@
 <template>
   <section class="relative h-screen overflow-hidden -mt-20">
-    <!-- <section class="relative h-screen overflow-hidden" style="margin-top: -80px"> -->
-
     <!-- Background Slides -->
     <transition-group name="fade" tag="div">
       <div
@@ -20,35 +18,38 @@
     <!-- Content -->
     <div class="relative z-10 flex items-center h-full">
       <div class="max-w-7xl mx-auto px-6">
-        <span
-          class="inline-block mb-4 text-sm font-semibold tracking-widest text-green-300"
-        >
-          RUMAH SAKIT UMUM DAERAH DR. SOETOMO
-        </span>
+        <transition name="slide-up" mode="out-in">
+          <div :key="active">
+            <span
+              class="inline-block mb-4 text-sm font-semibold tracking-widest text-green-300"
+            >
+              {{ slides[active].subtitle }}
+            </span>
 
-        <h1 class="text-white text-5xl md:text-6xl font-bold leading-tight max-w-3xl">
-          Pelayanan Kesehatan Terpadu & Profesional
-        </h1>
+            <h1 class="text-white text-5xl md:text-6xl font-bold leading-tight max-w-3xl">
+              {{ slides[active].title }}
+            </h1>
 
-        <p class="mt-6 max-w-xl text-white/90 text-lg">
-          Rumah Sakit Umum Daerah Dr. Soetomo Surabaya berkomitmen memberikan pelayanan
-          kesehatan yang bermutu, aman, dan berorientasi pada keselamatan pasien.
-        </p>
+            <p class="mt-6 max-w-xl text-white/90 text-lg">
+              {{ slides[active].description }}
+            </p>
 
-        <!-- CTA -->
-        <div class="mt-10 flex flex-wrap gap-4">
-          <button
-            class="px-6 py-3 bg-green-500 text-white rounded-full font-semibold hover:bg-green-600 transition"
-          >
-            Daftar Online
-          </button>
+            <!-- CTA -->
+            <div class="mt-10 flex flex-wrap gap-4">
+              <button
+                class="px-6 py-3 bg-green-500 text-white rounded-full font-semibold hover:bg-green-600 transition"
+              >
+                {{ slides[active].ctaPrimary }}
+              </button>
 
-          <button
-            class="px-6 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition"
-          >
-            Layanan Unggulan
-          </button>
-        </div>
+              <button
+                class="px-6 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition"
+              >
+                {{ slides[active].ctaSecondary }}
+              </button>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
 
@@ -56,7 +57,6 @@
     <button
       @click="prev"
       class="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition"
-      aria-label="Previous slide"
     >
       ❮
     </button>
@@ -64,12 +64,11 @@
     <button
       @click="next"
       class="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition"
-      aria-label="Next slide"
     >
       ❯
     </button>
 
-    <!-- Navigation Dots -->
+    <!-- Dots -->
     <div class="absolute bottom-10 right-10 flex gap-3 z-20">
       <button
         v-for="(_, i) in slides"
@@ -88,27 +87,75 @@ import { ref, onMounted, onUnmounted } from "vue";
 const slides = [
   {
     image: new URL("../assets/images/gedung1.webp", import.meta.url).href,
+    subtitle: "RS RUJUKAN NASIONAL",
+    title: "Pelayanan Kesehatan Terpadu & Profesional",
+    description:
+      "RSUD Dr. Soetomo memberikan layanan kesehatan bermutu tinggi dengan tenaga medis profesional.",
+    ctaPrimary: "Daftar Online",
+    ctaSecondary: "Layanan Unggulan",
   },
   {
     image: new URL("../assets/images/gedung2.webp", import.meta.url).href,
+    subtitle: "FASILITAS LENGKAP",
+    title: "Teknologi Medis Modern & Terpercaya",
+    description:
+      "Didukung peralatan medis canggih untuk menunjang diagnosis dan perawatan pasien.",
+    ctaPrimary: "Lihat Fasilitas",
+    ctaSecondary: "Jadwal Dokter",
   },
   {
     image: new URL("../assets/images/gedung3.webp", import.meta.url).href,
+    subtitle: "TENAGA AHLI",
+    title: "Dokter Spesialis Berpengalaman",
+    description:
+      "Tim dokter spesialis dan subspesialis dengan kompetensi nasional dan internasional.",
+    ctaPrimary: "Cari Dokter",
+    ctaSecondary: "Poliklinik",
   },
   {
     image: new URL("../assets/images/gedung4.webp", import.meta.url).href,
+    subtitle: "LAYANAN DARURAT",
+    title: "IGD 24 Jam Siap Melayani",
+    description:
+      "Pelayanan gawat darurat 24 jam dengan respon cepat dan sistem terintegrasi.",
+    ctaPrimary: "IGD",
+    ctaSecondary: "Kontak Darurat",
   },
   {
     image: new URL("../assets/images/gedung5.webp", import.meta.url).href,
+    subtitle: "PENDIDIKAN & RISET",
+    title: "Rumah Sakit Pendidikan Terdepan",
+    description:
+      "Fasilitas pendidikan dan riset medis untuk mendukung pengembangan ilmu kesehatan.",
+    ctaPrimary: "Program Pendidikan",
+    ctaSecondary: "Publikasi Riset",
   },
   {
     image: new URL("../assets/images/gedung6.webp", import.meta.url).href,
+    subtitle: "PENUNJANG KESIHATAN",
+    title: "Fasilitas Kesehatan Lengkap",
+    description:
+      "Laboratorium, Radiologi, Farmasi, dan layanan penunjang lainnya untuk mendukung perawatan pasien.",
+    ctaPrimary: "Layanan Penunjang",
+    ctaSecondary: "Jadwal Operasional",
   },
   {
     image: new URL("../assets/images/gedung7.webp", import.meta.url).href,
+    subtitle: "KOMITMEN KUALITAS",
+    title: "Pelayanan Prima & Kepuasan Pasien",
+    description:
+      "Berkomitmen memberikan pelayanan kesehatan terbaik dengan fokus pada kepuasan pasien.",
+    ctaPrimary: "Testimoni Pasien",
+    ctaSecondary: "Hubungi Kami",
   },
   {
     image: new URL("../assets/images/gedung8.webp", import.meta.url).href,
+    subtitle: "KESELAMATAN PASIEN",
+    title: "Standar Tinggi & Protokol Ketat",
+    description:
+      "Menerapkan standar keselamatan pasien dan protokol kesehatan yang ketat di seluruh layanan.",
+    ctaPrimary: "Protokol Kesehatan",
+    ctaSecondary: "Info Keselamatan",
   },
 ];
 
@@ -131,6 +178,7 @@ onUnmounted(() => clearInterval(interval));
 </script>
 
 <style>
+/* Background fade */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 1s ease;
@@ -138,5 +186,19 @@ onUnmounted(() => clearInterval(interval));
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* Text animation */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.4s ease;
+}
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 </style>
